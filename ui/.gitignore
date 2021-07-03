@@ -1,0 +1,11 @@
+.cache
+.parcel-cache
+.psci
+.psci_modules
+.spago
+bower_components
+dce-output
+dist/
+node_modules
+output
+.psc-ide-port

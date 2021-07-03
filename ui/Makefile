@@ -1,0 +1,20 @@
+watch:
+	nix-shell --run "yarn run watch"
+
+serve-dev:
+	nix-shell --run "yarn run serve-dev"
+
+bundle:
+	nix-shell --run "yarn run bundle"
+
+serve:
+	nix-shell --run "yarn run serve"
+
+test:
+	nix-shell --run "yarn run test"
+
+install:
+	nix-shell --run "yarn install"
+	
+
+.PHONY: test

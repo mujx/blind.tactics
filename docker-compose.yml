@@ -1,0 +1,31 @@
+version: "3"
+services:
+  blind_server:
+    build: .
+    container_name: blind_server
+    environment:
+      BLIND_DB_HOST: blind_db
+      BLIND_DB_PORT: 5432
+      BLIND_DB_USER: blind_test
+      BLIND_DB_PASSWORD: blind_test
+      BLIND_DB_NAME: blind_test
+      BLIND_HOST: "0.0.0.0"
+      BLIND_PORT: 9999
+    ports:
+      - "9999:9999"
+    depends_on:
+      - blind_db
+  blind_db:
+    container_name: blind_db
+    image: postgres:13-alpine
+    environment:
+      POSTGRES_DB: blind_test
+      POSTGRES_PASSWORD: blind_test
+      POSTGRES_USER: blind_test
+    volumes:
+      - blind_db_test_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+volumes:
+  blind_db_test_data: {}

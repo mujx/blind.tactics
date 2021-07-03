@@ -1,0 +1,38 @@
+### Game ideas
+
+- Color of Square
+- 2 Knights
+- Same diagonal
+- Colliding pieces
+- Tactics with 30 second timer
+- Tactics with arrows N-moves
+- Move piece without capture (enumeration)
+- Play moves from the opening and solve the position
+- Minimum moves (knights, enumeration)
+- Minimum moves (bishop, enumeration)
+- Studies (endgame < 7 pieces, full lines)
+- Find all captures (empty board)
+- Find all checks (empty board)
+- How can a piece arrive from X to Y
+- Say all routes from X to Y
+- Name the diagonals that intersect in X, Y, Z
+- Name the color that diagonals intersect
+- Opening traps
+- Can piece at X capture piece at Y? In 1 move? In 2 moves? etc
+
+### Checklist
+
+1. Improve the API errors (also handle them in the UI)
+1. Filter by themes
+1. Filter by number of pieces
+1. Show streak
+1. Have a separate endpoint for verifying the solution
+1. Press <enter> to submit solution
+
+### TODO
+
+1. Add favicon
+2. Set the title on every page
+3. Configure dev and prod api urls
+4. Add link to github project
+5. Make a pg_dump and migrate the data.

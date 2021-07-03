@@ -1,0 +1,37 @@
+{
+  "name": "gui",
+  "version": "1.0.0",
+  "description": "Blind chess tactics",
+  "author": "Konstantinos Sideris <siderisk@auth.gr>",
+  "license": " GPL-3.0-only",
+  "scripts": {
+    "postinstall": "spago install",
+    "clean": "rm -rf node_modules output dce-output .spago dist/* .cache",
+    "build": "spago build",
+    "watch": "spago build --watch -l",
+    "serve": "http-server dist",
+    "serve-dev": "spago build && parcel dev/index.html --open",
+    "test": "spago test",
+    "bundle:build": "spago build --purs-args '--codegen corefn'",
+    "bundle:dce": "zephyr -f Main.main",
+    "bundle:parcel": "parcel build assets/index.html --public-url '.' --no-source-maps",
+    "bundle": "npm run bundle:build && npm run bundle:dce && npm run bundle:parcel"
+  },
+  "devDependencies": {
+    "http-server": "0.12.3",
+    "parcel": "1.12.4",
+    "purty": "^7.0.0"
+  },
+  "dependencies": {
+    "@fontsource/roboto": "^4.4.5",
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "@popperjs/core": "^2.9.2",
+    "@yaireo/tagify": "4.1.2",
+    "bootstrap": "5.0.1",
+    "chartist": "^0.11.4",
+    "chessground": "7.12.0",
+    "jquery": "3.6.0",
+    "lorem-ipsum": "^2.0.3",
+    "typeface-open-sans": "^1.1.13"
+  }
+}
