@@ -1,7 +1,7 @@
 {
   "name": "gui",
   "version": "1.0.0",
-  "description": "Blind chess tactics",
+  "description": "blind.tactics UI",
   "author": "Konstantinos Sideris <siderisk@auth.gr>",
   "license": " GPL-3.0-only",
   "scripts": {

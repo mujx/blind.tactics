@@ -11,7 +11,9 @@ import Halogen.VDom.Driver (runUI)
 import Blind.Data.Route (routeCodec)
 import Routing.Duplex (parse)
 import Halogen as H
+import Effect.Console (logShow)
 import Blind.Component.Router as Router
+import Blind.Component.Utils (getBrowserLocation)
 import Blind.AppM (runAppM)
 import Blind.Env (Env, LogLevel(..))
 import Blind.Api.Request (BaseURL(..))
@@ -20,9 +22,11 @@ main :: Effect Unit
 main = do
   HA.runHalogenAff do
     body <- HA.awaitBody
+    url <- H.liftEffect getBrowserLocation
+
     let
       environment :: Env
-      environment = { logLevel: Dev, baseUrl: (BaseURL "https://blindtactics.com") }
+      environment = { logLevel: Dev, baseUrl: (BaseURL url) }
 
       rootComponent :: H.Component Router.Query {} Void Aff
       rootComponent = H.hoist (runAppM environment) Router.component

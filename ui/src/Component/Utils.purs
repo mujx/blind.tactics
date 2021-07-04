@@ -7,6 +7,7 @@ import Effect.Class (class MonadEffect)
 import Effect
 import Web.HTML (window)
 import Web.HTML.Window (location, document)
+import Web.HTML.Location (host, protocol)
 import Web.HTML.HTMLDocument (setTitle)
 import Effect.Aff.Class (class MonadAff)
 import Halogen.Subscription as HS
@@ -75,6 +76,15 @@ moveListCard moves title =
               ]
           ]
       ]
+
+getBrowserLocation :: Effect String
+getBrowserLocation = do
+  w <- H.liftEffect window
+  loc <- H.liftEffect $ location w
+  host <- H.liftEffect $ host loc
+  proto <- H.liftEffect $ protocol loc
+
+  pure $ proto <> "//" <> host
 
 setWindowTitle :: String -> Effect Unit
 setWindowTitle t = do
