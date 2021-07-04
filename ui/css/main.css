@@ -159,6 +159,10 @@ input.move-input {
   margin: 6em 0 5em 0;
 }
 
+.clean-link {
+  text-decoration: none;
+}
+
 .home-title {
   font-weight: 700;
   font-size: 3.2em;

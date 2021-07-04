@@ -28,11 +28,3 @@
 1. Show streak
 1. Have a separate endpoint for verifying the solution
 1. Press <enter> to submit solution
-
-### TODO
-
-1. Add favicon
-2. Set the title on every page
-3. Configure dev and prod api urls
-4. Add link to github project
-5. Make a pg_dump and migrate the data.
