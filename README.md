@@ -1,5 +1,6 @@
 # blind.tactics
 
+[![CircleCI](https://circleci.com/gh/mujx/blind.tactics.svg?style=svg)](https://circleci.com/gh/mujx/blind.tactics)
 [![BuiltWithNix](https://img.shields.io/badge/Built_With-Nix-5277C3.svg?logo=nixos&labelColor=73C3D5)](https://nixos.org/)
 
 Web application focused on blindfold chess training. It provides tactics and games to improve your

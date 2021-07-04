@@ -1,0 +1,25 @@
+version: 2.1
+jobs:
+  build_ui:
+    docker:
+      - image: nixos/nix:2.3
+    steps:
+      - checkout
+      - run:
+          name: "Build"
+          command: cd ui && nix-build --run "yarn run bundle"
+  build_server:
+    docker:
+      - image: cimg/rust:1.52.0
+    steps:
+      - checkout
+      - run:
+          name: "Build"
+          command: cargo build
+
+workflows:
+  version: 2
+  build_all:
+    jobs:
+      - build_ui
+      - build_server
