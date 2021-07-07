@@ -30,7 +30,7 @@ jobs:
             - target/debug/deps
           key: v1-cargo-cache-{{ arch }}-{{ checksum "Cargo.lock" }}
       - run:
-          name: "Build"
+          name: "Test"
           command: cargo test
 
 workflows:
