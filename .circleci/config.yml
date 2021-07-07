@@ -5,9 +5,18 @@ jobs:
       - image: nixos/nix:2.3
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - v1-yarn-cache-{{ arch }}-{{ checksum "ui/yarn.lock" }}
       - run:
           name: "Build"
           command: cd ui && nix-shell --run "yarn install && yarn run bundle"
+      - save_cache:
+          paths:
+            - ui/dce-output
+            - ui/node_modules
+            - ui/.spago
+          key: v1-yarn-cache-{{ arch }}-{{ checksum "ui/yarn.lock" }}
   build_server:
     docker:
       - image: cimg/rust:1.52.0
