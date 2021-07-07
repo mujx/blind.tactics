@@ -1,14 +1,14 @@
 let
   pkgs = import (builtins.fetchTarball {
     url =
-      "https://github.com/NixOS/nixpkgs/archive/42f23a740e980cdd33b85f83508c97092bbdea4a.tar.gz";
+      "https://github.com/NixOS/nixpkgs/archive/21.05.tar.gz";
   }) { };
 
   pursPkgs = import (pkgs.fetchFromGitHub {
     owner = "justinwoo";
     repo = "easy-purescript-nix";
-    rev = "b197e8764680f39416352f2ab3ed8f25e2a6b333";
-    sha256 = "1b59dddrkdvh0i26any5g7lxxaxnn9af61dhxbb9bdb5n831dviw";
+    rev = "47bdc016c7d56e987ca1aca690b1d6c9816a8584";
+    sha256 = "051fzxd03y0c63sll2bhn0h66dywy9lw6ylyh5vq8fymvix20q94";
   }) { inherit pkgs; };
 
 in pkgs.stdenv.mkDerivation {
