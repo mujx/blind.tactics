@@ -7,6 +7,7 @@ WORKDIR /usr/src/app
 
 COPY ui ./
 
+RUN nix-shell --run "yarn install"
 RUN nix-shell --run "yarn run bundle"
 
 FROM rust:1.52-buster as server-builder
