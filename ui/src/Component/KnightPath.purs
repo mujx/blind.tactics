@@ -97,6 +97,19 @@ problemStatement state =
   where
   fmtSquares s' = maybe "" (\p -> p.from <> " ⟹   " <> p.to) s'.puzzle
 
+mkTagInputs ::
+  forall m t.
+  MonadAff m =>
+  Array Int ->
+  Ht.HTML
+    ( H.ComponentSlot
+        ( moveInput :: H.Slot MoveInput.Query MoveInput.Output Int
+        | t
+        )
+        m
+        Action
+    )
+    Action
 mkTagInputs componentIds =
   Ht.div [ css "d-flex flex-column" ]
     ( A.concatMap

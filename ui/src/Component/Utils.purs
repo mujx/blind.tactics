@@ -1,6 +1,6 @@
 module Blind.Component.Utils where
 
-import Prelude
+import Prelude (Unit, Void, bind, discard, map, pure, void, ($), (<>))
 import Halogen as H
 import Halogen.HTML as Ht
 import Effect.Class (class MonadEffect)

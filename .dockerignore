@@ -1,0 +1,6 @@
+node_modules/
+output/
+dce-output/
+dist/
+.parcel-cache/
+.spago/

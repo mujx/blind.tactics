@@ -11,7 +11,6 @@ import Halogen.VDom.Driver (runUI)
 import Blind.Data.Route (routeCodec)
 import Routing.Duplex (parse)
 import Halogen as H
-import Effect.Console (logShow)
 import Blind.Component.Router as Router
 import Blind.Component.Utils (getBrowserLocation)
 import Blind.AppM (runAppM)

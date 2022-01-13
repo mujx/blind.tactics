@@ -45,7 +45,7 @@ parsePuzzles = runExcept $ traverse readPuzzle =<< readArray (puzzles_ 0)
 
 allPuzzles :: Array ProblemInput
 allPuzzles = case parsePuzzles of
-  Left e -> []
+  Left _ -> []
   Right v -> map mkProblemInput v
 
 foreign import puzzles_ :: Int -> Foreign

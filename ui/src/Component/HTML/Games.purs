@@ -33,15 +33,6 @@ fancyCard info =
         ]
     ]
 
-card :: forall i p. String -> String -> Ht.HTML i p
-card name description =
-  Ht.div [ css "card m-1 p-2 rounded-card frosted-glass" ]
-    [ Ht.div [ css "card-body" ]
-        [ Ht.h4 [ css "card-title m-3 font-weight-bold" ] [ Ht.text name ]
-        , Ht.p [ css "card-body" ] [ Ht.text description ]
-        ]
-    ]
-
 component :: forall i p. Ht.HTML i p
 component =
   Ht.div [ css "container games-panel" ]

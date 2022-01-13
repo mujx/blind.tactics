@@ -73,10 +73,6 @@ message (LogItem { message: m }) = m
 reason :: LogItem -> LogReason
 reason (LogItem { reason: r }) = r
 
--- | This helper function retrieves the time a `LogItem` was produced.
-timestamp :: LogItem -> DateTime
-timestamp (LogItem { timestamp: t }) = t
-
 -- | Let's finally implement the function to create a `LogItem`. This will be a pure function that
 -- | relies on our `Now` capability to grab the current time and write it as an additional piece
 -- | of metadata. Our application monad will retrieve the current time effectfully, but we'll

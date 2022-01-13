@@ -1,7 +1,7 @@
 module Blind.Component.FindChecks where
 
 import Prelude
-import Blind.Capability.Log (logInfo, class Log)
+import Blind.Capability.Log (class Log)
 import Blind.Capability.Now (class Now)
 import Blind.Component.FFI.ChessGround as C
 import Blind.Component.HTML.Utils (css, whenElem)
