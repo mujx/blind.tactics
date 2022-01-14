@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build_ui:
     docker:
-      - image: nixos/nix:2.5.1
+      - image: node:14
     steps:
       - checkout
       - restore_cache:
@@ -11,8 +11,9 @@ jobs:
       - run:
           name: "Build"
           command: |
-            nix-env -iA nixpkgs.git && \
-            cd ui && nix-shell --run "yarn install && yarn run bundle"
+            cd ui/ && \
+            yarn install && \
+            yarn run bundle
       - save_cache:
           paths:
             - ui/dce-output
