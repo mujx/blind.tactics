@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build_ui:
     docker:
-      - image: nixos/nix:2.3
+      - image: nixos/nix:2.5.1
     steps:
       - checkout
       - restore_cache:
@@ -19,7 +19,7 @@ jobs:
           key: v1-yarn-cache-{{ arch }}-{{ checksum "ui/yarn.lock" }}
   build_server:
     docker:
-      - image: cimg/rust:1.52.0
+      - image: cimg/rust:1.58.0
     steps:
       - checkout
       - run:
@@ -41,6 +41,23 @@ jobs:
       - run:
           name: "Test"
           command: cargo test
+  build_image:
+    environment:
+      IMAGE_NAME: mujx/blind
+      IMAGE_TAG: latest
+      DOCKERHUB_USERNAME: mujx
+    machine:
+      image: ubuntu-2004:202101-01
+    steps:
+      - checkout
+      - run:
+          name: Build image
+          command: docker build -f Dockerfile.arm -t $IMAGE_NAME:$IMAGE_TAG .
+      - run:
+          name: Publish image to DockerHub
+          command: |
+            echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+            docker push $IMAGE_NAME:$IMAGE_TAG
 
 workflows:
   version: 2
@@ -48,3 +65,4 @@ workflows:
     jobs:
       - build_ui
       - build_server
+      - build_docker_image

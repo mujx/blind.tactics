@@ -7,6 +7,7 @@ WORKDIR /usr/src/app
 
 COPY ui ./
 
+RUN nix-env -iA nixpkgs.git
 RUN nix-shell --run "yarn install"
 RUN nix-shell --run "yarn run bundle"
 
