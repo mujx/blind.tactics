@@ -1,5 +1,8 @@
 require('typeface-open-sans')
 require('@fontsource/roboto')
 
-var Main = require("./dce-output/Main");
-Main.main();
+if (process.env.NODE_ENV == "production") {
+  require("./dce-output/Main").main();
+} else {
+  require("./output/Main").main();
+}

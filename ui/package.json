@@ -10,11 +10,11 @@
     "build": "spago build",
     "watch": "spago build --watch -l",
     "serve": "http-server dist",
-    "serve-dev": "spago build && parcel dev/index.html --open",
+    "serve-dev": "spago build && NODE_ENV=dev parcel index.html --open",
     "test": "spago test",
     "bundle:build": "spago build --purs-args '--codegen corefn'",
     "bundle:dce": "zephyr -f Main.main",
-    "bundle:parcel": "parcel build assets/index.html --public-url '.' --no-source-maps",
+    "bundle:parcel": "NODE_ENV=production parcel build index.html --public-url '.' --no-source-maps",
     "bundle": "npm run bundle:build && npm run bundle:dce && npm run bundle:parcel"
   },
   "devDependencies": {

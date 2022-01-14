@@ -17,7 +17,7 @@ in pkgs.stdenv.mkDerivation {
     pursPkgs.purs
     pursPkgs.spago
     pursPkgs.zephyr
-    pursPkgs.purty
+    pursPkgs.purs-tidy
     pursPkgs.purescript-language-server
     pkgs.nodejs
     pkgs.cacert
