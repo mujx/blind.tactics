@@ -11,8 +11,8 @@ jobs:
       - run:
           name: "Build"
           command: |
-            cd ui && nix-shell --run "yarn install && yarn run bundle" && \
-            nix-env -iA nixpkgs.git
+            nix-env -iA nixpkgs.git && \
+            cd ui && nix-shell --run "yarn install && yarn run bundle"
       - save_cache:
           paths:
             - ui/dce-output
