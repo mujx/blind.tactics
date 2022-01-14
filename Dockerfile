@@ -1,17 +1,16 @@
 #
 # Build the frontend.
 #
-FROM nixos/nix:2.3 as dashboard-builder
+FROM nixos/nix:2.5.1 as dashboard-builder
 
 WORKDIR /usr/src/app
 
 COPY ui ./
 
-RUN nix-env -iA nixpkgs.git
 RUN nix-shell --run "yarn install"
 RUN nix-shell --run "yarn run bundle"
 
-FROM rust:1.52-buster as server-builder
+FROM rust:1.58-buster as server-builder
 
 WORKDIR /build
 

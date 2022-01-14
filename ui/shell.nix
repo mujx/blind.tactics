@@ -20,6 +20,7 @@ in pkgs.stdenv.mkDerivation {
     pursPkgs.purty
     pursPkgs.purescript-language-server
     pkgs.nodejs
+    pkgs.cacert
     pkgs.yarn
   ];
 }
