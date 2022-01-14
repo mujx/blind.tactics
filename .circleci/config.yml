@@ -65,4 +65,4 @@ workflows:
     jobs:
       - build_ui
       - build_server
-      - build_docker_image
+      - build_image
