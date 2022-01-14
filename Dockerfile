@@ -1,15 +1,18 @@
 #
 # Build the frontend.
 #
-FROM nixos/nix:2.5.1 as dashboard-builder
+FROM node:17 as dashboard-builder
 
 WORKDIR /usr/src/app
 
 COPY ui ./
 
-RUN nix-env -iA nixpkgs.git
-RUN nix-shell --run "yarn install"
-RUN nix-shell --run "yarn run bundle"
+RUN wget https://github.com/MaybeJustJames/zephyr/releases/download/c074270/Linux.tar.gz && \
+    tar xzf Linux.tar.gz && \
+    chmod +x zephyr/zephyr && \
+    mv zephyr/zephyr /usr/local/bin
+RUN yarn install
+RUN yarn run bundle
 
 FROM rust:1.58-buster as server-builder
 

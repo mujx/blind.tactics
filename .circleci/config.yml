@@ -2,18 +2,25 @@ version: 2.1
 jobs:
   build_ui:
     docker:
-      - image: node:14
+      - image: node:17
     steps:
       - checkout
       - restore_cache:
           keys:
             - v1-yarn-cache-{{ arch }}-{{ checksum "ui/yarn.lock" }}
       - run:
-          name: "Build"
+          name: "Install zephyr"
           command: |
-            cd ui/ && \
-            yarn install && \
-            yarn run bundle
+            wget https://github.com/MaybeJustJames/zephyr/releases/download/c074270/Linux.tar.gz && \
+            tar xzf Linux.tar.gz && \
+            chmod +x zephyr/zephyr && \
+            mv zephyr/zephyr /usr/local/bin
+      - run:
+          name: "Install dependencies"
+          command: cd ui && yarn install
+      - run:
+          name: "Build"
+          command: cd ui && yarn run bundle
       - save_cache:
           paths:
             - ui/dce-output
