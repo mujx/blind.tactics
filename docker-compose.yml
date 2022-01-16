@@ -1,7 +1,7 @@
 version: "3"
 services:
   blind_server:
-    build: .
+    image: mujx/blind:latest
     container_name: blind_server
     environment:
       BLIND_DB_HOST: blind_db

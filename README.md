@@ -1,12 +1,14 @@
 # blind.tactics
 
 [![CircleCI](https://circleci.com/gh/mujx/blind.tactics.svg?style=svg)](https://circleci.com/gh/mujx/blind.tactics)
-[![BuiltWithNix](https://img.shields.io/badge/Built_With-Nix-5277C3.svg?logo=nixos&labelColor=73C3D5)](https://nixos.org/)
+![Docker Image Version (latest by date)](https://img.shields.io/docker/v/mujx/blind?label=mujx%2Fblind&style=flat-square)
 
 Web application focused on blindfold chess training. It provides tactics and games to improve your
 board visualization.
 
 All tactics puzzles are imported from [lichess](https://database.lichess.org/#puzzles).
+
+The application is available at https://blindtactics.com
 
 ## Features
 
@@ -20,46 +22,65 @@ With more to come!
 
 ## Build
 
-### UI
+The application consists of the single-page frontend app and the backend server.
 
-With [nix](https://nixos.org/download.html) installed
+### Frontend
+
+You'll need nodejs and yarn/npm installed.
 
 ```bash
-make -C ui bundle
+cd ui
+
+yarn install
+yarn run bundle
 ```
 
 The static files will be located at `ui/dist`.
 
 ### Server
 
-With [cargo](https://github.com/rust-lang/cargo) installed
+You'll need rustc and cargo installed. Both can be installed through [rustup](https://rustup.rs/).
 
 ```bash
 cargo build --release
 ```
 
-You can access the binary at `./target/release/server`.
+The binary can be found at `./target/release/server`. 
+
+Now we can start the server and make it load the frontend application with the
+following command:
+
+```bash
+./target/release/server -s ./ui/dist
+```
+
+Note that you'll also need to provide the necessary environment variables (found
+in `docker-compose.yml`) to establish connectivity with the postgres database.
 
 ### Docker
 
-Alternatively you can create a docker image that bundles the UI and the server.
-
-```bash
-docker build -t blind:latest .
-```
-
-## Deploy
-
-:warning: At the current stage, the SQL schema and the puzzle import will have to be done manually.
-
-The following command will create a Postgres database, the UI as a single page application and the
-API server.
+Alternatively you can use the pre-built docker image (`mujx/blind:latest`) with
+the docker-compose file to spin up the whole system.
 
 ```bash
 docker-compose up
 ```
 
 The app will be available at http://localhost:9999
+
+:warning: At the current stage, the SQL schema and the puzzle import will have to
+be done manually.
+
+#### Import lichess puzzles
+
+1. Download the csv file from the puzzles [page](https://database.lichess.org/#puzzles).
+2. Use the server cli arguments to load them to the database
+
+```bash
+./server --puzzles-file puzzles.csv
+```
+
+3. You can re-run the above command to refresh your puzzle database.
 
 ## Contributing
 
