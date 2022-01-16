@@ -118,7 +118,7 @@ async fn main() -> std::io::Result<()> {
     info!("creating db pool...");
 
     let pool = db::mk_pool().await?;
-    pool.get().await.unwrap();
+    let _ = pool.get().await.unwrap();
 
     if let Some(file) = opt.puzzles_file.clone() {
         info!("loading puzzles from csv file...");

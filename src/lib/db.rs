@@ -1,5 +1,5 @@
 use super::types::{PuzzleDbRecord, PuzzleRecord};
-use deadpool_postgres::{Config, ManagerConfig, Pool, RecyclingMethod};
+use deadpool_postgres::{Config, ManagerConfig, Pool, RecyclingMethod, Runtime};
 use log::info;
 use postgres_types::ToSql;
 use std::env;
@@ -23,7 +23,7 @@ pub async fn mk_pool() -> Result<Pool, std::io::Error> {
     info!("db user: {:?}", cfg.user);
     info!("db name: {:?}", cfg.dbname);
 
-    let pool = cfg.create_pool(NoTls).unwrap();
+    let pool = cfg.create_pool(Some(Runtime::Tokio1), NoTls).unwrap();
 
     Ok(pool)
 }
