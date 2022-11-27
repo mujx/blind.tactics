@@ -1,13 +1,13 @@
 #
 # Build the frontend.
 #
-FROM node:14 as dashboard-builder
+FROM node:18 as dashboard-builder
 
 WORKDIR /usr/src/app
 
 COPY ui ./
 
-RUN wget https://github.com/MaybeJustJames/zephyr/releases/download/v0.5.2/Linux.tar.gz && \
+RUN wget https://github.com/MaybeJustJames/zephyr/releases/download/v0.4.0/Linux.tar.gz && \
     tar xzf Linux.tar.gz && \
     chmod +x zephyr/zephyr && \
     mv zephyr/zephyr /usr/local/bin
