@@ -1,6 +1,6 @@
 # blind.tactics
 
-[![CircleCI](https://circleci.com/gh/mujx/blind.tactics.svg?style=svg)](https://circleci.com/gh/mujx/blind.tactics)
+![Github Actions](https://github.com/github/docs/actions/workflows/ci.yml/badge.svg?branch=master)
 ![Docker Image Version (latest by date)](https://img.shields.io/docker/v/mujx/blind?label=mujx%2Fblind&style=flat-square)
 
 Web application focused on blindfold chess training. It provides tactics and games to improve your

@@ -1,0 +1,79 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  cancel_running_workflows:
+    name: Cancel running workflows
+    runs-on: ubuntu-latest
+    steps:
+    - name: cancel running workflows
+      uses: styfle/cancel-workflow-action@0.8.0
+      with:
+        access_token: ${{ github.token }}
+
+  build_ui:
+    name: Build UI
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 18
+    - name: Cache pureScript dependencies
+      uses: actions/cache@v2
+      with:
+        key: spago-${{ hashFiles('ui/*.dhall') }}
+        path: |
+          ui/.spago
+          ui/output
+          ui/dce-output
+    - name: Cache yarn dependencies
+      uses: actions/cache@v2
+      with:
+        key: yarn-${{ hashFiles('ui/yarn.lock') }}
+        path: |
+          ui/node_modules
+          ui/.parcel-cache
+    - run: |
+        wget https://github.com/MaybeJustJames/zephyr/releases/download/v0.4.0/Linux.tar.gz
+        tar xzf Linux.tar.gz && \
+        chmod +x zephyr/zephyr && \
+        mv zephyr/zephyr /usr/local/bin
+    - run: cd ui && yarn install
+    - run: cd ui && yarn run bundle
+
+  build_server:
+    name: Build server
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+    - uses: actions-rs/cargo@v1
+      with:
+        command: build
+    - name: Cache cargo dependencies
+      uses: actions/cache@v2
+      with:
+        key: cargo-${{ hashFiles('Cargo.lock') }}
+        path: |
+          target/
+          ~/.cargo
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Build
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: false
