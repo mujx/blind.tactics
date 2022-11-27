@@ -20,6 +20,7 @@ jobs:
 
   build_ui:
     name: Build UI
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
@@ -50,6 +51,7 @@ jobs:
 
   build_server:
     name: Build server
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - uses: actions-rs/toolchain@v1
