@@ -6,9 +6,9 @@ services:
     environment:
       BLIND_DB_HOST: blind_db
       BLIND_DB_PORT: 5432
-      BLIND_DB_USER: blind_test
-      BLIND_DB_PASSWORD: blind_test
-      BLIND_DB_NAME: blind_test
+      BLIND_DB_USER: blind
+      BLIND_DB_PASSWORD: blind
+      BLIND_DB_NAME: blind
       BLIND_HOST: "0.0.0.0"
       BLIND_PORT: 9999
     ports:
@@ -19,9 +19,9 @@ services:
     container_name: blind_db
     image: postgres:13-alpine
     environment:
-      POSTGRES_DB: blind_test
-      POSTGRES_PASSWORD: blind_test
-      POSTGRES_USER: blind_test
+      POSTGRES_DB: blind
+      POSTGRES_PASSWORD: blind
+      POSTGRES_USER: blind
     volumes:
       - blind_db_test_data:/var/lib/postgresql/data
     ports:

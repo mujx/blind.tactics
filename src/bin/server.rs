@@ -122,7 +122,7 @@ async fn main() -> std::io::Result<()> {
 
     if let Some(file) = opt.puzzles_file.clone() {
         info!("loading puzzles from csv file...");
-        let tactics = load_puzzles(&file).expect("error running example");
+        let tactics = load_puzzles(&file).expect("error loading puzzles from csv file");
 
         info!("importing puzzles from csv file to postgres...");
 

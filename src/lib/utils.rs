@@ -154,7 +154,7 @@ pub async fn generate_tactics_puzzle(
 pub fn load_puzzles(f: &str) -> Result<Vec<PuzzleRecord>, Box<dyn Error>> {
     let mut puzzles: Vec<PuzzleRecord> = Vec::new();
 
-    for result in ReaderBuilder::new().from_path(f)?.records() {
+    for result in ReaderBuilder::new().flexible(true).from_path(f)?.records() {
         let puzzle: PuzzleRecord = result?.deserialize(None)?;
         puzzles.push(puzzle);
     }
