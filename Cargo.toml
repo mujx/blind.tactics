@@ -6,7 +6,7 @@ edition     = "2021"
 default-run = "server"
 
 [dependencies]
-actix-web         = { version = "4.2.1", features = ["rustls"] }
+actix-web         = "4.2.1"
 actix-files       = "0.6.2"
 csv               = "1.1.6"
 chrono            = { version = "0.4", features = ["serde"] }
