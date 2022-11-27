@@ -1,20 +1,20 @@
 #
 # Build the frontend.
 #
-FROM node:17 as dashboard-builder
+FROM node:18 as dashboard-builder
 
 WORKDIR /usr/src/app
 
 COPY ui ./
 
-RUN wget https://github.com/MaybeJustJames/zephyr/releases/download/c074270/Linux.tar.gz && \
+RUN wget https://github.com/MaybeJustJames/zephyr/releases/download/v0.5.2/Linux.tar.gz && \
     tar xzf Linux.tar.gz && \
     chmod +x zephyr/zephyr && \
     mv zephyr/zephyr /usr/local/bin
 RUN yarn install
 RUN yarn run bundle
 
-FROM rust:1.58-buster as server-builder
+FROM rust:1.65-buster as server-builder
 
 WORKDIR /build
 
