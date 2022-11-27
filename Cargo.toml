@@ -6,15 +6,15 @@ edition     = "2021"
 default-run = "server"
 
 [dependencies]
-actix-web         = { version = "4.0.0-beta.20", features = ["rustls"] }
-actix-files       = "0.6.0-beta.14"
+actix-web         = { version = "4.2.1", features = ["rustls"] }
+actix-files       = "0.6.2"
 csv               = "1.1.6"
 chrono            = { version = "0.4", features = ["serde"] }
-env_logger        = "0.8.4"
-log               = "0.4.14"
+env_logger        = "0.10.0"
+log               = "0.4.17"
 nom               = "6"
 pgnparse          = "0.1.8"
-reqwest           = { version = "0.11.9", features = ["json", "rustls-tls"] }
+reqwest           = { version = "0.11.13", features = ["json", "rustls-tls"] }
 serde             = { version = "1", features = ["derive"] }
 serde_derive      = "1"
 serde_json        = "1"
@@ -23,7 +23,7 @@ rand              = "0.8.3"
 tokio-postgres    = "0.7.5"
 postgres-types    = { version = "0.2.2", features = ["derive"] }
 deadpool-postgres = "0.10.1"
-structopt         = "0.3.25"
+structopt         = "0.3.26"
 itertools         = "0.10.3"
 serde_postgres    = "0.2.0"
 
