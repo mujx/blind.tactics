@@ -34,7 +34,7 @@
     "@fontsource/roboto": "4.5.8",
     "@fortawesome/fontawesome-free": "5.15.4",
     "@popperjs/core": "2.11.6",
-    "@yaireo/tagify": "4.9.8",
+    "@yaireo/tagify": "4.12.0",
     "bootstrap": "5.2.3",
     "chartist": "0.11.4",
     "chessground": "7.12.0",

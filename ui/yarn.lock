@@ -780,10 +780,10 @@
   resolved "https://registry.yarnpkg.com/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
   integrity sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
 
-"@yaireo/tagify@4.9.8":
-  version "4.9.8"
-  resolved "https://registry.yarnpkg.com/@yaireo/tagify/-/tagify-4.9.8.tgz#67082ecca81fbbec4d75bb95581280f27af22fba"
-  integrity sha512-JqRTN4vb5tx06PJIRIOAlriO/B6u+a3jD/VBb5x6E1MOlC4wrMfaLHmNnrMpiZCHMXox7pVmrtNuyBe4YReJ4w==
+"@yaireo/tagify@4.12.0":
+  version "4.12.0"
+  resolved "https://registry.yarnpkg.com/@yaireo/tagify/-/tagify-4.12.0.tgz#4e5cd6d37fa80cb70f029dce879843b047844e3d"
+  integrity sha512-3PErDt0dWGsrpxFcfoCXiCKJDil4J8hdts2GApS7z6KAKkkBMYxD9pSyF28TdkdehcuC/E64TMVwU9e2TdjTxw==
 
 abortcontroller-polyfill@^1.1.9:
   version "1.7.3"
